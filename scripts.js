@@ -21,4 +21,11 @@ $(function(){
     console.log(data);
   }
 
+  $('#search').keydown(function(event){
+    if(event.which === 13){
+      event.preventDefault();
+      getArticle($('#search').val());
+    }
+  })
+
 });
