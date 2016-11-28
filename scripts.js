@@ -1,7 +1,7 @@
 $(function(){
 
   function url(term){
-    return 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + term + '&limit=10&format=json';
+    return 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrlimit=10&prop=extracts&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + term;
   }
 
   function submitSearch(){
@@ -16,15 +16,36 @@ $(function(){
   }
 
   function inputData(data){ // how to input the data once response is received
-    console.log(data);
     var results = $('#results');
-    results.empty()
-    results.append('<h4 id="results-header">Results for <em>' + data[0] +'</em>:</h4>');
-    for(var i = 0; i < 10; i++){
-      var heading = '<a href="' + data[3][i] + '"><h5>' + data[1][i] + '</h5></a>';
-      var body = '<p>' + data[2][i] + '</p>';
-      results.append(heading+body);
-    }
+    results.empty();
+
+    if (data.query){
+
+      var articles = data.query.pages;
+
+      results.append('<h4 id="results-header">Results for <em>' + $('#search-field').val() +'</em>:</h4>');
+      
+      var keys = (Object.keys(articles));
+
+      keys.sort(function(a,b){                    // sorting articles by their "index" key
+        return articles[a].index - articles[b].index
+      })
+
+      for (var i = 0; i < 10; i++){               // displaying articles in order
+        var article = (articles[keys[i]]);
+        results.append('<div class="articles"><a href="https://en.wikipedia.org/?curid=' 
+          + article.pageid + '" target="_blank"><h5>' + article.title + '</h5></a>'
+          + '<p>' + article.extract + '</p></div>');
+        
+      }
+    } else {
+        results.append('<h4 id="results-header">No results for <em>' + $('#search-field').val() +'</em>:</h4>');
+    }         
+
+
+
+
+
   }
 
   $('#search-field').keydown(function(event){
