@@ -1,0 +1,19 @@
+#search-bar {
+  position: relative;
+  top: 200px;
+  transition-property: top;
+  transition-duration: 0.5s;
+}
+
+button {
+  font-size: 20px;
+}
+
+#search-field {
+  border: none;
+  background-color: transparent;
+}
+
+#results {
+  padding: 5px 50px;
+}
