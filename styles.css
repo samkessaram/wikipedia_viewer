@@ -4,7 +4,7 @@ body {
 
 #background {
   font-size: 500px;
-  color: lightgray;
+  color: rgba(211,211,211,0.25);
   position: fixed;
   z-index: -1;
 }
