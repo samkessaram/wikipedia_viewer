@@ -1,5 +1,7 @@
 $(function(){
 
+  $('#search-field').focus();                   // set focus for quick searching
+
   function url(term){
     return 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrlimit=10&prop=extracts&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + term;
   }

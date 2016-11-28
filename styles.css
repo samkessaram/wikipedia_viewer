@@ -29,7 +29,7 @@ button {
 }
 
 #search-field:focus {
-    outline: none !important;
+    outline: none;
     box-shadow: 0 0 10px #719ECE;
 }
 
