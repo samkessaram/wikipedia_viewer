@@ -13,7 +13,7 @@ $(function(){
         dataType: 'jsonp',
         success: inputData     
       });
-      $('#search-bar').css('top','20px');
+      $('#search-bar').css('top','20px');               // move search bar to top of window
     }
   }
 
@@ -44,10 +44,6 @@ $(function(){
         results.append('<h4 id="results-header">No results for <em>' + $('#search-field').val() +'</em>:</h4>');
     }         
 
-
-
-
-
   }
 
   $('#search-field').keydown(function(event){
@@ -65,7 +61,5 @@ $(function(){
   $('#search-field').focus(function(){ // selects text
     $(this).select()                   // making it quicker to overwrite previous search
   });
-
-
 
 });
