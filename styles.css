@@ -11,7 +11,7 @@ body {
 
 #search-bar {
   position: relative;
-  top: 200px;
+  top: 300px;
   transition-property: top;
   transition-duration: 0.5s;
 }
